@@ -1,5 +1,7 @@
 package tp1;
 
+import tp1.ejercicio1.MySimpleLinkedList;
+
 public class Main {
 
     public static void imprimeArrgelo(int vec[]){
@@ -17,8 +19,13 @@ public class Main {
 
     public static void main(String[] args) {
 
-        int[] vec = new int[10];
+        /*int[] vec = new int[10];
         int[] arr = cargaArreglo(vec);
-        imprimeArrgelo(arr);
+        imprimeArrgelo(arr);*/
+
+        MySimpleLinkedList lista = new MySimpleLinkedList();
+        lista.insertFront(1);
+
+
     }
 }
