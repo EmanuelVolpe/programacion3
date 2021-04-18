@@ -59,6 +59,15 @@ public class MySimpleLinkedList implements Iterable<Integer> {
         }
     }
 
+    public Integer getTop() {
+        if (this.first != null) {
+            Node temp = this.first;
+            this.first = first.getNext();
+            return temp.getInfo();
+        } else
+        return null; //RETORNO NULL PORQUE LA LISTA ESTÁ VACIA
+    }
+
     public int indexOf(int num){
         int contador = 0;
         int indice = -1;

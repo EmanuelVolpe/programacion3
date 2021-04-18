@@ -34,12 +34,12 @@ public class Main {
         lista.insertFront(47);
         lista.insertFront(50);
         lista.insertFront(60);
-        lista.insertFront(70);
-        lista.insertFront(80);
+        //lista.insertFront(70);
+        //lista.insertFront(80);
 
         System.out.println("///////////////////////////////");
-
-        lista.print();
+        System.out.println(lista.size());
+        System.out.println(lista.getTop());
 
     }
 }
