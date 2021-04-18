@@ -2,13 +2,13 @@ package tp1.ejercicio1;
 
 public class MySimpleLinkedList implements Iterable<Integer> {
 
-    private Node first;
-    private int size;
+    protected Node first; // ES EL HEAD DE LAS SLIDES
+    protected int size;
+    protected Node cursor;
 
     public MySimpleLinkedList() {
         this.first = null;
         this.size = 0;
-
     }
 
     public void insertFront(Integer o) {
@@ -46,9 +46,34 @@ public class MySimpleLinkedList implements Iterable<Integer> {
     }
 
     public Integer get(int index) {
-        // TODO
-        return null;
+        if ((-1 < index) && (index < size)){
+            int contador = 0;
+            Node cursor = this.first;
+            while (contador < index){
+                cursor = cursor.getNext();
+                contador++;
+            }
+            return cursor.getInfo();
+        } else {
+            return null;
+        }
     }
+
+    public int indexOf(int num){
+        int contador = 0;
+        int indice = -1;
+        Node cursor = this.first;
+        while (contador < size) {
+            if (cursor.getInfo() == num) {
+                indice = contador;
+                break;
+            } else {
+                cursor = cursor.getNext();
+                contador++;
+            };
+        };
+        return indice;
+    };
 
     public void print(int n) {
         // TODO
