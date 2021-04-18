@@ -75,8 +75,11 @@ public class MySimpleLinkedList implements Iterable<Integer> {
         return indice;
     };
 
-    public void print(int n) {
-        // TODO
+    public void print() {
+        MyIterator it = iterator();
+        while (it.hasNext()) {
+            System.out.println(it.next());
+        }
     }
 
     @Override

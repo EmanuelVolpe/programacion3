@@ -37,14 +37,9 @@ public class Main {
         lista.insertFront(70);
         lista.insertFront(80);
 
-        MyIterator it = lista.iterator();
-        while (it.hasNext()) {
-            System.out.println(it.next());
-        }
-
         System.out.println("///////////////////////////////");
-        System.out.println(lista.indexOf(47));
-        //System.out.println(lista.size());
+
+        lista.print();
 
     }
 }
