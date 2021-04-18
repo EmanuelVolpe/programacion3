@@ -96,4 +96,15 @@ public class MySimpleLinkedList implements Iterable<Integer> {
         return new MyIterator(this.first);
     }
 
+    ///////////////////////////////////////////////////////////////////////
+    public MySimpleLinkedList reverse() {
+        MySimpleLinkedList listaAuxiliar = new MySimpleLinkedList();
+        MyIterator puntero = iterator();
+        while (puntero.hasNext()) {
+            listaAuxiliar.insertFront(puntero.get());
+            puntero.move();
+        }
+        return listaAuxiliar;
+    }
+
 }

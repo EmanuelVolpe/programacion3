@@ -1,9 +1,6 @@
 package tp1;
 
-import tp1.ejercicio1.MyIterator;
 import tp1.ejercicio1.MySimpleLinkedList;
-
-import java.util.Iterator;
 
 public class Main {
 
@@ -37,9 +34,16 @@ public class Main {
         //lista.insertFront(70);
         //lista.insertFront(80);
 
-        System.out.println("///////////////////////////////");
+
+
         System.out.println(lista.size());
-        System.out.println(lista.getTop());
+        System.out.println("///////////////////////////////");
+        lista.print();
+        System.out.println("///////////////////////////////");
+
+        lista.reverse().print();
+
+
 
     }
 }
