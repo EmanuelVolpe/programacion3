@@ -110,26 +110,4 @@ public class MySimpleLinkedList implements Iterable<Integer> {
         return listaAuxiliar;
     }
 
-    public MySimpleLinkedList listaPedida(MySimpleLinkedList listaDeEntrada, int umbral) {
-        MySimpleLinkedList listaAuxiliar = new MySimpleLinkedList();
-        MyIterator iteradorEntrada = listaDeEntrada.iterator();
-        int suma = 0;
-        while (iteradorEntrada.hasNext()) {
-            suma = suma + iteradorEntrada.get();
-            if ((suma <= umbral) && (listaAuxiliar.isEmpty())) {
-                listaAuxiliar.insertFront(suma);
-            }
-            if((suma <= umbral) && (listaAuxiliar.first != null)){
-                listaAuxiliar.extractFront();
-                listaAuxiliar.insertFront(suma);
-            } else {
-                if(iteradorEntrada.get() <= umbral) {
-                    listaAuxiliar.insertFront(iteradorEntrada.get());
-                }
-                suma = iteradorEntrada.get();
-            }
-            iteradorEntrada.move();
-        }
-        return listaAuxiliar.reverse(); //agregar reverse
-    }
 }

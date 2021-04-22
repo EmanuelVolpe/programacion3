@@ -1,8 +1,32 @@
 package tp1;
 
+import tp1.ejercicio1.MyIterator;
 import tp1.ejercicio1.MySimpleLinkedList;
 
 public class Main {
+
+    public static MySimpleLinkedList listaPedida(MySimpleLinkedList listaDeEntrada, int umbral) {
+        MySimpleLinkedList listaAuxiliar = new MySimpleLinkedList();
+        MyIterator iteradorEntrada = listaDeEntrada.iterator();
+        int suma = 0;
+        while (iteradorEntrada.hasNext()) {
+            suma = suma + iteradorEntrada.get();
+            if ((suma <= umbral) && (listaAuxiliar.isEmpty())) {
+                listaAuxiliar.insertFront(suma);
+            }
+            if((suma <= umbral) && (!listaAuxiliar.isEmpty())){ // modificar acaaaaaaaaaaaaaaaaa
+                listaAuxiliar.extractFront();
+                listaAuxiliar.insertFront(suma);
+            } else {
+                if(iteradorEntrada.get() <= umbral) {
+                    listaAuxiliar.insertFront(iteradorEntrada.get());
+                }
+                suma = iteradorEntrada.get();
+            }
+            iteradorEntrada.move();
+        }
+        return listaAuxiliar.reverse();
+    }
 
     public static void main(String[] args) {
 
@@ -24,7 +48,7 @@ public class Main {
         listaDeEntrada1.print();
         System.out.println("-------------------------------------------------------------------------");
         System.out.println("-------------------------------------------------------------------------");
-        listaDeSalida1 = listaDeEntrada1.listaPedida(listaDeEntrada1,10);
+        listaDeSalida1 = listaPedida(listaDeEntrada1,10);
         System.out.println("Tamaño de la lista de Salida: " + listaDeSalida1.size());
         System.out.println("Lista de Salida");
         listaDeSalida1.print();
@@ -33,7 +57,7 @@ public class Main {
         System.out.println(" ");
         System.out.println(" ");
 
-        //-------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------------------
 
         System.out.println("/////////////////////////////////////////////////////////////////////////");
         System.out.println("Ejercicio Nª 2");
@@ -47,7 +71,7 @@ public class Main {
         listaDeEntrada2.print();
         System.out.println("-------------------------------------------------------------------------");
         System.out.println("-------------------------------------------------------------------------");
-        listaDeSalida2 = listaDeEntrada2.listaPedida(listaDeEntrada2,10);
+        listaDeSalida2 = listaPedida(listaDeEntrada2,10);
         System.out.println("Tamaño de la lista de Salida: " + listaDeSalida2.size());
         System.out.println("Lista de Salida");
         listaDeSalida2.print();
@@ -56,7 +80,7 @@ public class Main {
         System.out.println(" ");
         System.out.println(" ");
 
-        //-------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------------------
 
         System.out.println("/////////////////////////////////////////////////////////////////////////");
         System.out.println("Ejercicio Nª 3");
@@ -70,7 +94,7 @@ public class Main {
         listaDeEntrada3.print();
         System.out.println("-------------------------------------------------------------------------");
         System.out.println("-------------------------------------------------------------------------");
-        listaDeSalida3 = listaDeEntrada3.listaPedida(listaDeEntrada3,2);
+        listaDeSalida3 = listaPedida(listaDeEntrada3,2);
         System.out.println("Tamaño de la lista de Salida: " + listaDeSalida3.size());
         System.out.println("Lista de Salida");
         listaDeSalida3.print();
@@ -79,7 +103,7 @@ public class Main {
         System.out.println(" ");
         System.out.println(" ");
 
-        //-------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------------------
 
         System.out.println("/////////////////////////////////////////////////////////////////////////");
         System.out.println("Ejercicio Nª 4");
@@ -97,7 +121,7 @@ public class Main {
         listaDeEntrada4.print();
         System.out.println("-------------------------------------------------------------------------");
         System.out.println("-------------------------------------------------------------------------");
-        listaDeSalida4 = listaDeEntrada4.listaPedida(listaDeEntrada4,10);
+        listaDeSalida4 = listaPedida(listaDeEntrada4,10);
         System.out.println("Tamaño de la lista de Salida: " + listaDeSalida4.size());
         System.out.println("Lista de Salida");
         listaDeSalida4.print();
@@ -106,7 +130,7 @@ public class Main {
         System.out.println(" ");
         System.out.println(" ");
 
-        //-------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------------------
 
         System.out.println("/////////////////////////////////////////////////////////////////////////");
         System.out.println("Ejercicio Nª 5");
@@ -125,7 +149,7 @@ public class Main {
         listaDeEntrada5.print();
         System.out.println("-------------------------------------------------------------------------");
         System.out.println("-------------------------------------------------------------------------");
-        listaDeSalida5 = listaDeEntrada5.listaPedida(listaDeEntrada5,15);
+        listaDeSalida5 = listaPedida(listaDeEntrada5,15);
         System.out.println("Tamaño de la lista de Salida: " + listaDeSalida5.size());
         System.out.println("Lista de Salida");
         listaDeSalida5.print();
@@ -134,7 +158,7 @@ public class Main {
         System.out.println(" ");
         System.out.println(" ");
 
-        //-------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------------------
 
         System.out.println("/////////////////////////////////////////////////////////////////////////");
         System.out.println("Ejercicio Nª 6");
@@ -154,7 +178,7 @@ public class Main {
         listaDeEntrada6.print();
         System.out.println("-------------------------------------------------------------------------");
         System.out.println("-------------------------------------------------------------------------");
-        listaDeSalida6 = listaDeEntrada6.listaPedida(listaDeEntrada6,15);
+        listaDeSalida6 = listaPedida(listaDeEntrada6,15);
         System.out.println("Tamaño de la lista de Salida: " + listaDeSalida6.size());
         System.out.println("Lista de Salida");
         listaDeSalida6.print();
