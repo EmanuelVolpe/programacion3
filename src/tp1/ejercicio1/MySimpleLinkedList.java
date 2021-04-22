@@ -1,10 +1,12 @@
 package tp1.ejercicio1;
 
+import java.util.Iterator;
+
 public class MySimpleLinkedList implements Iterable<Integer> {
 
     protected Node first; // ES EL HEAD DE LAS SLIDES
     protected int size;
-    protected Node cursor;
+    //protected Node cursor;
 
     public MySimpleLinkedList() {
         this.first = null;
@@ -84,19 +86,21 @@ public class MySimpleLinkedList implements Iterable<Integer> {
         return indice;
     };
 
-    public void print() {
-        MyIterator it = iterator();
-        while (it.hasNext()) {
-            System.out.println(it.next());
-        }
-    }
-
     @Override
     public MyIterator iterator() {
         return new MyIterator(this.first);
     }
 
-    ///////////////////////////////////////////////////////////////////////
+    public void print() {
+        MyIterator it = iterator();
+        while (it.hasNext()) {
+            System.out.print(it.next() + " - ");
+        }
+        System.out.println("");
+    }
+
+
+
     public MySimpleLinkedList reverse() {
         MySimpleLinkedList listaAuxiliar = new MySimpleLinkedList();
         MyIterator puntero = iterator();
@@ -106,5 +110,30 @@ public class MySimpleLinkedList implements Iterable<Integer> {
         }
         return listaAuxiliar;
     }
+
+    public MySimpleLinkedList listaPedida(MySimpleLinkedList listaDeEntrada, int umbral) {
+        MySimpleLinkedList listaAuxiliar = new MySimpleLinkedList();
+        MyIterator iteradorEntrada = listaDeEntrada.iterator();
+        int suma = 0;
+        int aux = 0;
+        while (iteradorEntrada.hasNext()) {
+            suma = suma + iteradorEntrada.get();
+            if ((suma <= umbral) && (listaAuxiliar.first == null)) {
+                listaAuxiliar.insertFront(suma);
+            }
+            if((suma >= iteradorEntrada.get()) && (suma <= umbral) && (listaAuxiliar.first != null)){
+                listaAuxiliar.extractFront();
+                listaAuxiliar.insertFront(suma);
+            } else {
+                if(iteradorEntrada.get() <= umbral) {
+                    listaAuxiliar.insertFront(iteradorEntrada.get());
+                }
+                suma = iteradorEntrada.get();
+            }
+            iteradorEntrada.move();
+        }
+        return listaAuxiliar;
+    }
+
 
 }

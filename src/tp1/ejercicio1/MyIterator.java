@@ -4,10 +4,10 @@ import java.util.Iterator;
 
 public class MyIterator implements Iterator<Integer> {
 
-    private Node cursor;
+    protected Node cursor;
 
-    public MyIterator(Node first) {
-        this.cursor = first;
+    public MyIterator(Node node) {
+        this.cursor = node;
     }
 
     @Override
@@ -16,6 +16,7 @@ public class MyIterator implements Iterator<Integer> {
     }
 
     @Override
+    //ENTREGA EL VALOR DEL CURSOR Y DEJA PARADO EL CURSOR EN EL NODO SIGUIENTE
     public Integer next() {
         Integer info = this.cursor.getInfo();
         this.cursor = this.cursor.getNext();

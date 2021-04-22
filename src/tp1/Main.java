@@ -4,44 +4,47 @@ import tp1.ejercicio1.MySimpleLinkedList;
 
 public class Main {
 
-    /*public static void imprimeArrgelo(int vec[]){
-        for (int i = 0; i < vec.length; i++){
-            System.out.print(vec[i] + " // ");
-        }
-    }
-
-    public static int[] cargaArreglo(int vec[]){
-        for (int i = 0; i < vec.length; i++){
-            vec[i] = (int) (Math.random()*20);
-        }
-        return vec;
-    }*/
-
     public static void main(String[] args) {
 
-        /*int[] vec = new int[10];
-        int[] arr = cargaArreglo(vec);
-        imprimeArrgelo(arr);*/
+        MySimpleLinkedList listaDeSalida = new MySimpleLinkedList();
 
-        MySimpleLinkedList lista = new MySimpleLinkedList();
-        lista.insertFront(10);
-        lista.insertFront(20);
-        lista.insertFront(30);
-        lista.insertFront(40);
-        lista.insertFront(47);
-        lista.insertFront(50);
-        lista.insertFront(60);
-        //lista.insertFront(70);
-        //lista.insertFront(80);
+        MySimpleLinkedList listaDeEntrada = new MySimpleLinkedList();
+        listaDeEntrada.insertFront(28);
+        listaDeEntrada.insertFront(14);
+        listaDeEntrada.insertFront(15);
+        listaDeEntrada.insertFront(7);
+        listaDeEntrada.insertFront(2);
+        listaDeEntrada.insertFront(4);
+        listaDeEntrada.insertFront(5);
+        listaDeEntrada.insertFront(3);
+
+        /*listaDeEntrada.insertFront(3);
+        listaDeEntrada.insertFront(2);
+        listaDeEntrada.insertFront(1);*/
+
+        /*listaDeEntrada.insertFront(28);
+        listaDeEntrada.insertFront(14);
+        listaDeEntrada.insertFront(19);
+        listaDeEntrada.insertFront(7);
+        listaDeEntrada.insertFront(2);
+        listaDeEntrada.insertFront(5);
+        listaDeEntrada.insertFront(3);*/
+
+
+        listaDeEntrada.print();
+        System.out.println("Tamaño de la lista de Entrada: " + listaDeEntrada.size());
+        System.out.println("---------------------------------------------------");
+        System.out.println("---------------------------------------------------");
+
+
+        listaDeSalida = listaDeSalida.listaPedida(listaDeEntrada,15);
+        listaDeSalida.reverse().print();
+        System.out.println("Tamaño de la lista de Salida: " + listaDeSalida.size());
+        System.out.println("---------------------------------------------------");
+        System.out.println("---------------------------------------------------");
 
 
 
-        System.out.println(lista.size());
-        System.out.println("///////////////////////////////");
-        lista.print();
-        System.out.println("///////////////////////////////");
-
-        lista.reverse().print();
 
 
 
