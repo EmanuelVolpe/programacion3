@@ -6,47 +6,143 @@ public class Main {
 
     public static void main(String[] args) {
 
-        MySimpleLinkedList listaDeSalida = new MySimpleLinkedList();
-
-        MySimpleLinkedList listaDeEntrada = new MySimpleLinkedList();
-        listaDeEntrada.insertFront(28);
-        listaDeEntrada.insertFront(14);
-        listaDeEntrada.insertFront(15);
-        listaDeEntrada.insertFront(7);
-        listaDeEntrada.insertFront(2);
-        listaDeEntrada.insertFront(4);
-        listaDeEntrada.insertFront(5);
-        listaDeEntrada.insertFront(3);
-
-        /*listaDeEntrada.insertFront(3);
-        listaDeEntrada.insertFront(2);
-        listaDeEntrada.insertFront(1);*/
-
-        /*listaDeEntrada.insertFront(28);
-        listaDeEntrada.insertFront(14);
-        listaDeEntrada.insertFront(19);
-        listaDeEntrada.insertFront(7);
-        listaDeEntrada.insertFront(2);
-        listaDeEntrada.insertFront(5);
-        listaDeEntrada.insertFront(3);*/
+        MySimpleLinkedList listaDeSalida1;
+        MySimpleLinkedList listaDeSalida2;
+        MySimpleLinkedList listaDeSalida3;
+        MySimpleLinkedList listaDeSalida4;
+        MySimpleLinkedList listaDeSalida5;
+        MySimpleLinkedList listaDeSalida6;
 
 
-        listaDeEntrada.print();
-        System.out.println("Tamaño de la lista de Entrada: " + listaDeEntrada.size());
+        System.out.println("Ejercicio Nª 1");
+        MySimpleLinkedList listaDeEntrada1 = new MySimpleLinkedList();
+        // NO SE AGREGAN ELEMENTOS A LA LISTA
+
+        System.out.println("Tamaño de la lista de Entrada: " + listaDeEntrada1.size());
+        System.out.println("Lista de Entrada");
+        listaDeEntrada1.print();
         System.out.println("---------------------------------------------------");
         System.out.println("---------------------------------------------------");
+        listaDeSalida1 = listaDeEntrada1.listaPedida(listaDeEntrada1,10);
+        System.out.println("Tamaño de la lista de Salida: " + listaDeSalida1.size());
+        System.out.println("Lista de Salida");
+        listaDeSalida1.print();
+        System.out.println("/////////////////////////////////////////////////////////////////////////");
+        System.out.println(" ");
 
+        //-------------------------------------------------------------------------------
 
-        listaDeSalida = listaDeSalida.listaPedida(listaDeEntrada,15);
-        listaDeSalida.reverse().print();
-        System.out.println("Tamaño de la lista de Salida: " + listaDeSalida.size());
+        System.out.println("Ejercicio Nª 2");
+        MySimpleLinkedList listaDeEntrada2 = new MySimpleLinkedList();
+        listaDeEntrada2.insertFront(3);
+        listaDeEntrada2.insertFront(2);
+        listaDeEntrada2.insertFront(1);
+
+        System.out.println("Tamaño de la lista de Entrada: " + listaDeEntrada2.size());
+        System.out.println("Lista de Entrada");
+        listaDeEntrada2.print();
         System.out.println("---------------------------------------------------");
         System.out.println("---------------------------------------------------");
+        listaDeSalida2 = listaDeEntrada2.listaPedida(listaDeEntrada2,10);
+        System.out.println("Tamaño de la lista de Salida: " + listaDeSalida2.size());
+        System.out.println("Lista de Salida");
+        listaDeSalida2.print();
+        System.out.println("/////////////////////////////////////////////////////////////////////////");
+        System.out.println(" ");
 
+        //-------------------------------------------------------------------------------
 
+        System.out.println("Ejercicio Nª 3");
+        MySimpleLinkedList listaDeEntrada3 = new MySimpleLinkedList();
+        listaDeEntrada3.insertFront(3);
+        listaDeEntrada3.insertFront(2);
+        listaDeEntrada3.insertFront(1);
 
+        System.out.println("Tamaño de la lista de Entrada: " + listaDeEntrada3.size());
+        System.out.println("Lista de Entrada");
+        listaDeEntrada3.print();
+        System.out.println("---------------------------------------------------");
+        System.out.println("---------------------------------------------------");
+        listaDeSalida3 = listaDeEntrada3.listaPedida(listaDeEntrada3,2);
+        System.out.println("Tamaño de la lista de Salida: " + listaDeSalida3.size());
+        System.out.println("Lista de Salida");
+        listaDeSalida3.print();
+        System.out.println("/////////////////////////////////////////////////////////////////////////");
+        System.out.println(" ");
 
+        //-------------------------------------------------------------------------------
 
+        System.out.println("Ejercicio Nª 4");
+        MySimpleLinkedList listaDeEntrada4 = new MySimpleLinkedList();
+        listaDeEntrada4.insertFront(28);
+        listaDeEntrada4.insertFront(14);
+        listaDeEntrada4.insertFront(19);
+        listaDeEntrada4.insertFront(7);
+        listaDeEntrada4.insertFront(2);
+        listaDeEntrada4.insertFront(5);
+        listaDeEntrada4.insertFront(3);
+
+        System.out.println("Tamaño de la lista de Entrada: " + listaDeEntrada4.size());
+        System.out.println("Lista de Entrada");
+        listaDeEntrada4.print();
+        System.out.println("---------------------------------------------------");
+        System.out.println("---------------------------------------------------");
+        listaDeSalida4 = listaDeEntrada4.listaPedida(listaDeEntrada4,10);
+        System.out.println("Tamaño de la lista de Salida: " + listaDeSalida4.size());
+        System.out.println("Lista de Salida");
+        listaDeSalida4.print();
+        System.out.println("/////////////////////////////////////////////////////////////////////////");
+        System.out.println(" ");
+
+        //-------------------------------------------------------------------------------
+
+        System.out.println("Ejercicio Nª 5");
+        MySimpleLinkedList listaDeEntrada5 = new MySimpleLinkedList();
+        listaDeEntrada5.insertFront(28);
+        listaDeEntrada5.insertFront(14);
+        listaDeEntrada5.insertFront(15);
+        listaDeEntrada5.insertFront(7);
+        listaDeEntrada5.insertFront(2);
+        listaDeEntrada5.insertFront(4);
+        listaDeEntrada5.insertFront(5);
+        listaDeEntrada5.insertFront(3);
+
+        System.out.println("Tamaño de la lista de Entrada: " + listaDeEntrada5.size());
+        System.out.println("Lista de Entrada");
+        listaDeEntrada5.print();
+        System.out.println("---------------------------------------------------");
+        System.out.println("---------------------------------------------------");
+        listaDeSalida5 = listaDeEntrada5.listaPedida(listaDeEntrada5,15);
+        System.out.println("Tamaño de la lista de Salida: " + listaDeSalida5.size());
+        System.out.println("Lista de Salida");
+        listaDeSalida5.print();
+        System.out.println("/////////////////////////////////////////////////////////////////////////");
+        System.out.println(" ");
+
+        //-------------------------------------------------------------------------------
+
+        System.out.println("Ejercicio Nª 6");
+        MySimpleLinkedList listaDeEntrada6 = new MySimpleLinkedList();
+        listaDeEntrada6.insertFront(3);
+        listaDeEntrada6.insertFront(28);
+        listaDeEntrada6.insertFront(14);
+        listaDeEntrada6.insertFront(15);
+        listaDeEntrada6.insertFront(7);
+        listaDeEntrada6.insertFront(2);
+        listaDeEntrada6.insertFront(4);
+        listaDeEntrada6.insertFront(5);
+        listaDeEntrada6.insertFront(3);
+
+        System.out.println("Tamaño de la lista de Entrada: " + listaDeEntrada6.size());
+        System.out.println("Lista de Entrada");
+        listaDeEntrada6.print();
+        System.out.println("---------------------------------------------------");
+        System.out.println("---------------------------------------------------");
+        listaDeSalida6 = listaDeEntrada6.listaPedida(listaDeEntrada6,15);
+        System.out.println("Tamaño de la lista de Salida: " + listaDeSalida6.size());
+        System.out.println("Lista de Salida");
+        listaDeSalida6.print();
+        System.out.println("/////////////////////////////////////////////////////////////////////////");
 
     }
 }
