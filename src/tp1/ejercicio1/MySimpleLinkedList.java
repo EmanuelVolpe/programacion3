@@ -13,7 +13,7 @@ public class MySimpleLinkedList implements Iterable<Integer> {
         this.size = 0;
     }
 
-    public void insertFront(Integer o) {
+    public void insertFront(Integer o) {     //Complejidad O(1)
         Node tmp = new Node(o,null);      //crea una instancia de clase nodo
         tmp.setNext(this.first);            //setea como proximo nodo al que era primero (first)
         this.first = tmp;                   //first (puntero de la lista) ahora apunta donde estaba tmp
@@ -21,7 +21,7 @@ public class MySimpleLinkedList implements Iterable<Integer> {
     }
 
     // ESTE METODO ELIMINA EL PRIMER ELEMENTO DE LISTA Y NOS RETORNA SU INFO
-    public Integer extractFront() {
+    public Integer extractFront() { //Complejidad O(1)
         if (this.first != null) {//SI HAY ELEMENTOS REMUEVO EL PRIMERO Y RETORNO SU INFO
             Node temp = this.first;
             this.first = first.getNext();
@@ -31,11 +31,11 @@ public class MySimpleLinkedList implements Iterable<Integer> {
             return null; //RETORNO NULL PORQUE LA LISTA ESTÁ VACIA
     }
 
-    public boolean isEmpty() {
+    public boolean isEmpty() { //Complejidad O(1)
         return this.first == null;
     }
 
-    public int size() {
+    public int size() { //Complejidad O(1)
         /*int count = 0;
         Node cursor = this.first;
 
@@ -47,7 +47,7 @@ public class MySimpleLinkedList implements Iterable<Integer> {
         return size;
     }
 
-    public Integer get(int index) {
+    public Integer get(int index) { //Complejidad O(n) donde n es el tamaño de la lista;
         if ((-1 < index) && (index < size)){
             int contador = 0;
             Node cursor = this.first;
@@ -61,7 +61,7 @@ public class MySimpleLinkedList implements Iterable<Integer> {
         }
     }
 
-    public Integer getTop() {
+    public Integer getTop() { //Complejidad O(1);
         if (this.first != null) {
             Node temp = this.first;
             this.first = first.getNext();
@@ -70,7 +70,7 @@ public class MySimpleLinkedList implements Iterable<Integer> {
         return null; //RETORNO NULL PORQUE LA LISTA ESTÁ VACIA
     }
 
-    public int indexOf(int num){
+    public int indexOf(int num){ //Complejidad O(n) donde n es el tamaño de la lista;
         int contador = 0;
         int indice = -1;
         Node cursor = this.first;
@@ -87,20 +87,20 @@ public class MySimpleLinkedList implements Iterable<Integer> {
     };
 
     @Override
-    public MyIterator iterator() {
+    public MyIterator iterator() { //Complejidad O(1)
         return new MyIterator(this.first);
     }
 
-    public void print() {
+    public void print() { //Complejidad O(n) donde n es el tamaño de la lista;
         MyIterator it = iterator();
         while (it.hasNext()) {
             System.out.print(it.next() + " - ");
         }
-        System.out.println("");
+        System.out.println(" ");
     }
 
 
-    public MySimpleLinkedList reverse() {
+    public MySimpleLinkedList reverse() { //Complejidad O(n) donde n es el tamaño de la lista;
         MySimpleLinkedList listaAuxiliar = new MySimpleLinkedList();
         MyIterator puntero = iterator();
         while (puntero.hasNext()) {

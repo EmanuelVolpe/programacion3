@@ -17,19 +17,18 @@ public class MyIterator implements Iterator<Integer> {
 
     @Override
     //ENTREGA EL VALOR DEL CURSOR Y DEJA PARADO EL CURSOR EN EL NODO SIGUIENTE
-    public Integer next() {
+    public Integer next() { //Complejidad O(1)
         Integer info = this.cursor.getInfo();
         this.cursor = this.cursor.getNext();
         return info;
     }
 
     /* Metodos adicionales que podemos agregar si queremos */
-
-    public Integer get() {
+    public Integer get() {//Complejidad O(1)
         return this.cursor.getInfo();
     }
 
-    public void move() {
+    public void move() {//Complejidad O(1)
         this.cursor = this.cursor.getNext();
     }
 

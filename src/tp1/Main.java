@@ -5,7 +5,8 @@ import tp1.ejercicio1.MySimpleLinkedList;
 
 public class Main {
 
-    public static MySimpleLinkedList listaPedida(MySimpleLinkedList listaDeEntrada, int umbral) {
+    public static MySimpleLinkedList listaPedida(MySimpleLinkedList listaDeEntrada, int umbral) { //Complejidad O(n) donde n es el tamaño de la lista;
+
         MySimpleLinkedList listaAuxiliar = new MySimpleLinkedList();
         MyIterator iteradorEntrada = listaDeEntrada.iterator();
         int suma = 0;
@@ -14,7 +15,7 @@ public class Main {
             if ((suma <= umbral) && (listaAuxiliar.isEmpty())) {
                 listaAuxiliar.insertFront(suma);
             }
-            if((suma <= umbral) && (!listaAuxiliar.isEmpty())){ // modificar acaaaaaaaaaaaaaaaaa
+            if((suma <= umbral) && (!listaAuxiliar.isEmpty())){
                 listaAuxiliar.extractFront();
                 listaAuxiliar.insertFront(suma);
             } else {

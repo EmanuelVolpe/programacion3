@@ -31,4 +31,5 @@ public class Node {
         this.info = info;
     }
 
+    //Todos los metodos son O(1);
 }
