@@ -1,7 +1,7 @@
-package tp1;
+package tpListas;
 
-import tp1.ejercicio1.MyIterator;
-import tp1.ejercicio1.MySimpleLinkedList;
+import tpListas.ejercicio1.MyIterator;
+import tpListas.ejercicio1.MySimpleLinkedList;
 
 public class Main {
 

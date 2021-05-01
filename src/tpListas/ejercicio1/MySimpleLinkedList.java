@@ -1,6 +1,4 @@
-package tp1.ejercicio1;
-
-import java.util.Iterator;
+package tpListas.ejercicio1;
 
 public class MySimpleLinkedList implements Iterable<Integer> {
 
