@@ -1,4 +1,4 @@
-package ProgramacionIII.tp2;
+package tpArboles;
 
 public class Tree {
 
@@ -11,6 +11,17 @@ public class Tree {
 		this.izquierda = null;
 		this.derecha = null;
 	}
+
+	public Tree() {
+		this.valor = valor;
+		this.izquierda = null;
+		this.derecha = null;
+	}
+
+	/*public Tree(int[] arr) {
+		this.izquierda = null;
+		this.derecha = null;
+	}*/
 
 	public void add(int newValue) {
 		if (newValue < this.valor) {
@@ -28,7 +39,8 @@ public class Tree {
 	
 	// Complejidad O(n) donde n es la cantidad de valores del arbol
 	public int getHeight() {
-		if (this.izquierda == null && this.derecha == null) { // Si soy una hoja
+		//Este IF funciona como condicion de corte
+		if (this.izquierda == null && this.derecha == null) { // Si soy una hoja o la raiz(altura cero)
 			return 0; // Soy chato, tengo altura 0
 		} else {
 			// Si tengo al menos un hijo			
@@ -36,15 +48,16 @@ public class Tree {
 			int alturaDer = 0;
 			
 			if (this.izquierda != null)
-				alturaIzq = 1 + this.izquierda.getHeight(); 
+				alturaIzq = this.izquierda.getHeight() + 1;
 			
 			if (this.derecha != null)
-				alturaDer = 1 + this.derecha.getHeight();
+				alturaDer = this.derecha.getHeight() + 1;
 			
 			int mayor = Math.max(alturaIzq, alturaDer);
 			
 			return mayor;			
 		}
 	}
+
 		
 }

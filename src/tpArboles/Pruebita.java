@@ -66,6 +66,9 @@ public class Pruebita {
 
         int arr [] = new int[] {6, 50, 300, 10000, 15, 25, 30};
 
+        int a = 98;
+        int b = 9;
+
         //burbujeo(arr);
         //bubbleSortAdapt(arr);
 
@@ -75,6 +78,8 @@ public class Pruebita {
 
         flag = estaOrdenadoRecursivo(arr, 0);
         informaOrden(flag);
+
+        System.out.println(Math.max(a,b));
 
 
     }

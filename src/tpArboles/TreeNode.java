@@ -1,4 +1,4 @@
-package ProgramacionIII.tp2;
+package tpArboles;
 
 public class TreeNode {
 
