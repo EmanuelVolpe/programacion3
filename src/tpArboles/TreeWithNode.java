@@ -7,6 +7,13 @@ public class TreeWithNode {
 	public TreeWithNode() {
 		this.raiz = null;
 	}
+
+	public TreeWithNode(int[] arr) {
+		for (int i = 0; i < arr.length; i++) {
+			TreeNode nodo = new TreeNode(arr[i]);
+			add(nodo.getValor());
+		}
+	}
 	
 	public void add(int value) {
 		if (this.raiz == null)
@@ -58,6 +65,7 @@ public class TreeWithNode {
 			return mayor;	
 		}
 	}
+
 	public int getValorRoot(){
 		return this.raiz.getValor();
 	}
@@ -86,7 +94,7 @@ public class TreeWithNode {
 		System.out.print(raiz.getValor() + " ");
 	}
 
-	void printPreOrder(TreeNode raiz) {
+	void printPreOrder(TreeNode raiz) { //falta incorporar los separadores ("-")
 		if (raiz == null)
 			return;
 		System.out.print(raiz.getValor() + " ");
@@ -94,7 +102,7 @@ public class TreeWithNode {
 		printPreOrder(raiz.getDer());
 	}
 
-	public int getMaxElement(){
+	public int getMaxElem(){
 		if (raiz == null)
 			return -1;
 		else {
@@ -106,7 +114,7 @@ public class TreeWithNode {
 		}
 	}
 
-	public boolean hasElement(int info) {
+	public boolean hasElem(int info) {
 		TreeNode nodo = raiz;
 		while (nodo != null) {
 			if (info == nodo.getValor()) {

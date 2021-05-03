@@ -4,10 +4,10 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		//int[] valoresIniciales = new int[] {15, 4, 1, 25, 50, 6, 7, 20, 5, 30};
-		//Tree miArbol = new Tree(valoresIniciales);
+		int[] valoresIniciales = new int[] {15, 4, 1, 25, 50, 6, 7, 20, 5, 30};
+		TreeWithNode tree = new TreeWithNode(valoresIniciales);
 
-		TreeNode node0 = new TreeNode(15);
+		/*TreeNode node0 = new TreeNode(15);
 		TreeNode node1 = new TreeNode(4);
 		TreeNode node2 = new TreeNode(1);
 		TreeNode node3 = new TreeNode(25);
@@ -31,22 +31,23 @@ public class Main {
 		tree.add(node7.getValor());
 		tree.add(node8.getValor());
 		tree.add(node9.getValor());
-		//tree.add(node10.getValor());
+		tree.add(node10.getValor());*/
 
 
-		/*int altura = tree.getHeight();
-		System.out.println(altura);
-
-		System.out.println(tree.isEmpty());
-
-		System.out.println(tree.getValorRoot());
-
-
-		tree.printPostOrder(tree.getRoot());*/
-
-		System.out.println(tree.getMaxElement());
-
-		System.out.println(tree.hasElement(0));
+		int altura = tree.getHeight();
+		System.out.println("La altura del arbol es: " + altura);
+		System.out.println("-------------------------------------------------------");
+		System.out.println("Arbol vacio: " + tree.isEmpty());
+		System.out.println("-------------------------------------------------------");
+		System.out.println("Valor de la raiz del Arbol: " + tree.getValorRoot());
+		System.out.println("-------------------------------------------------------");
+		System.out.println("El recorrido pedido es: ");
+		tree.printPostOrder(tree.getRoot());
+		System.out.println(" ");
+		System.out.println("-------------------------------------------------------");
+		System.out.println("Mayor elemento del Arbol: " + tree.getMaxElem());
+		System.out.println("-------------------------------------------------------");
+		System.out.println("Tiene el elemento pedido: " + tree.hasElem(0));
 
 	}
 
