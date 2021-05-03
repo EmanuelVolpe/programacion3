@@ -34,7 +34,7 @@ public class Main {
 		//tree.add(node10.getValor());
 
 
-		int altura = tree.getHeight();
+		/*int altura = tree.getHeight();
 		System.out.println(altura);
 
 		System.out.println(tree.isEmpty());
@@ -42,7 +42,11 @@ public class Main {
 		System.out.println(tree.getValorRoot());
 
 
-		tree.printPostOrder(tree.getRoot());
+		tree.printPostOrder(tree.getRoot());*/
+
+		System.out.println(tree.getMaxElement());
+
+		System.out.println(tree.hasElement(0));
 
 	}
 

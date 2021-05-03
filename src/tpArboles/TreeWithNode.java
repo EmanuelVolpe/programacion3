@@ -94,4 +94,32 @@ public class TreeWithNode {
 		printPreOrder(raiz.getDer());
 	}
 
+	public int getMaxElement(){
+		if (raiz == null)
+			return -1;
+		else {
+			TreeNode nodo = raiz;
+			while(nodo.getDer() != null) {
+				nodo = nodo.getDer();
+			}
+			return nodo.getValor();
+		}
+	}
+
+	public boolean hasElement(int info) {
+		TreeNode nodo = raiz;
+		while (nodo != null) {
+			if (info == nodo.getValor()) {
+				return true;
+			} else if (info > nodo.getValor()) {
+				nodo= nodo.getDer();
+			} else {
+				nodo = nodo.getIzq();
+			}
+		}
+		return false;
+	}
+
+
+
 }
