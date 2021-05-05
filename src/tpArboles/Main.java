@@ -1,10 +1,18 @@
 package tpArboles;
 
+import java.util.ArrayList;
+
 public class Main {
+
+	public static void imprimeLista(ArrayList<TreeNode> hojas){
+		for (int i = 0; i < hojas.size(); i++) {
+			System.out.println(hojas.get(i).getValor());
+		}
+	}
 
 	public static void main(String[] args) {
 
-		int[] valoresIniciales = new int[] {15, 4, 1, 25, 50, 6, 7, 20, 5, 30};
+		int[] valoresIniciales = new int[] {15, 4, 2, 25, 50, 6, 7, 20, 5, 30};
 		TreeWithNode tree = new TreeWithNode(valoresIniciales);
 
 		/*TreeNode node0 = new TreeNode(15);
@@ -17,7 +25,7 @@ public class Main {
 		TreeNode node7 = new TreeNode(20);
 		TreeNode node8 = new TreeNode(5);
 		TreeNode node9 = new TreeNode(30);
-		//TreeNode node10 = new TreeNode(9);
+		TreeNode node10 = new TreeNode(9);
 
 
 		TreeWithNode tree = new TreeWithNode();
@@ -42,12 +50,16 @@ public class Main {
 		System.out.println("Valor de la raiz del Arbol: " + tree.getValorRoot());
 		System.out.println("-------------------------------------------------------");
 		System.out.println("El recorrido pedido es: ");
-		tree.printPostOrder(tree.getRoot());
+		tree.printPostOrder();
 		System.out.println(" ");
 		System.out.println("-------------------------------------------------------");
 		System.out.println("Mayor elemento del Arbol: " + tree.getMaxElem());
 		System.out.println("-------------------------------------------------------");
 		System.out.println("Tiene el elemento pedido: " + tree.hasElem(0));
+		System.out.println("-------------------------------------------------------");
+
+
+		//imprimeLista(tree.getFrontera());
 
 	}
 

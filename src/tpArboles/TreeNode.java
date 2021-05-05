@@ -12,6 +12,12 @@ public class TreeNode {
 		this.derecha = null;
 	}
 
+	public TreeNode() {
+		this.valor = 0;
+		this.izquierda = null;
+		this.derecha = null;
+	}
+
 	public TreeNode getIzq() {
 		return izquierda;
 	}

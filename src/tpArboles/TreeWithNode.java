@@ -1,9 +1,12 @@
 package tpArboles;
 
+import java.util.ArrayList;
+
 public class TreeWithNode {
 
 	private TreeNode raiz;
-	
+
+	//------------------------------ CONSTRUCTORES -------------------------------------------------------------------//
 	public TreeWithNode() {
 		this.raiz = null;
 	}
@@ -14,7 +17,10 @@ public class TreeWithNode {
 			add(nodo.getValor());
 		}
 	}
-	
+	//----------------------------------------------------------------------------------------------------------------//
+
+
+	//------------ METODO AGREGAR ------------------------------------------------------------------------------------//
 	public void add(int value) {
 		if (this.raiz == null)
 			this.raiz = new TreeNode(value);
@@ -40,7 +46,10 @@ public class TreeWithNode {
 			}
 		}
 	}
-	
+	//----------------------------------------------------------------------------------------------------------------//
+
+
+	//------------ OBTENER ALTURA DEL ARBOL --------------------------------------------------------------------------//
 	// O(n) donde n es la cantidad de nodos del arbol
 	public int getHeight() {
 		if (this.raiz == null)
@@ -65,46 +74,87 @@ public class TreeWithNode {
 			return mayor;	
 		}
 	}
+	//----------------------------------------------------------------------------------------------------------------//
 
+
+	//--------------------------- OBTENER DATOS DE LA RAIZ -----------------------------------------------------------//
 	public int getValorRoot(){
-		return this.raiz.getValor();
+		if(this.getRoot() != null)
+			return this.getRoot().getValor();
+		return -9999;
 	}
 
 	public TreeNode getRoot(){
-		return this.raiz;
+		if(this.raiz != null)
+			return this.raiz;
+		return null;
 	}
+	//----------------------------------------------------------------------------------------------------------------//
 
+
+	//----------------------------- VACIO O NO -----------------------------------------------------------------------//
 	public boolean isEmpty(){
 		return this.raiz == null;
 	}
+	//----------------------------------------------------------------------------------------------------------------//
 
-	public void printInOrder(TreeNode raiz) {
+
+	//--------------------------- RECORRIDO IN_ORDER -----------------------------------------------------------------//
+	public void printInOrder() {
+		if (this.raiz == null)
+			return;
+		else
+			this.printInOrder(this.raiz); // O(n)
+	}
+
+	private void printInOrder(TreeNode raiz) {
 		if (raiz == null)
 			return;
 		printInOrder(raiz.getIzq());
 		System.out.print(raiz.getValor() + " ");
 		printInOrder(raiz.getDer());
 	}
+	//----------------------------------------------------------------------------------------------------------------//
 
-	void printPostOrder(TreeNode raiz) {
+
+	//----------------------------- RECORRIDO POST_ORDER -------------------------------------------------------------//
+	public void printPostOrder() {
+		if (this.raiz == null)
+			return;
+		else
+			this.printPostOrder(this.raiz); // O(n)
+	}
+	private void printPostOrder(TreeNode raiz) {
 		if (raiz == null)
 			return;
 		printPostOrder(raiz.getIzq());
 		printPostOrder(raiz.getDer());
 		System.out.print(raiz.getValor() + " ");
 	}
+	//----------------------------------------------------------------------------------------------------------------//
 
-	void printPreOrder(TreeNode raiz) { //falta incorporar los separadores ("-")
+
+	//---------------------------- RECORRIDO PRE_ORDER ---------------------------------------------------------------//
+	public void printPreOrder() {
+		if (this.raiz == null)
+			return;
+		else
+			this.printPreOrder(this.raiz); // O(n)
+	}
+	private void printPreOrder(TreeNode raiz) { //falta incorporar los separadores ("-")
 		if (raiz == null)
 			return;
 		System.out.print(raiz.getValor() + " ");
 		printPreOrder(raiz.getIzq());
 		printPreOrder(raiz.getDer());
 	}
+	//----------------------------------------------------------------------------------------------------------------//
 
+
+	//------------------------- OBTENER MAXIMO ELEMENTO --------------------------------------------------------------//
 	public int getMaxElem(){
 		if (raiz == null)
-			return -1;
+			return -9999;
 		else {
 			TreeNode nodo = raiz;
 			while(nodo.getDer() != null) {
@@ -113,7 +163,10 @@ public class TreeWithNode {
 			return nodo.getValor();
 		}
 	}
+	//----------------------------------------------------------------------------------------------------------------//
 
+
+	//--------------------------------- TIENE O NO UN ELEMENTO -------------------------------------------------------//
 	public boolean hasElem(int info) {
 		TreeNode nodo = raiz;
 		while (nodo != null) {
@@ -127,6 +180,40 @@ public class TreeWithNode {
 		}
 		return false;
 	}
+	//----------------------------------------------------------------------------------------------------------------//
+
+	/*public ArrayList<TreeNode> getFrontera() {
+		ArrayList<TreeNode> hojas = new ArrayList<TreeNode>();
+		TreeNode cursor = new TreeNode();
+		int valorCursor;
+		if (raiz.getIzq() == null && raiz.getDer() == null) { // Si es una hoja
+			hojas.add(raiz);
+			return hojas; // Soy chato, tengo altura 0
+		} else {
+			// Si tengo al menos un hijo
+			cursor = this.raiz;
+			while (cursor.getIzq() != null){
+				cursor = cursor.getIzq();
+				valorCursor = cursor.getValor();
+			}
+			hojas.add(cursor);
+			while (cursor.getDer() != null){
+				cursor = cursor.getDer();
+			}
+			hojas.add(cursor);
+			return hojas;
+		}
+	}*/
+
+
+
+	/*public ArrayList<TreeNode> getLongestBranch() {
+
+	}
+
+	public ArrayList<TreeNode> getFrontera(int nivel) {
+
+	}*/
 
 
 
