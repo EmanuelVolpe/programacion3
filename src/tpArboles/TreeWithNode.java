@@ -60,7 +60,7 @@ public class TreeWithNode {
 	
 	// Complejidad O(n) donde n es la cantidad de nodos del arbol
 	private int getHeight(TreeNode cursor) {
-		if (cursor.getIzq() == null && cursor.getDer() == null) { // Si es una hoja
+		if (cursor.getIzq() == null && cursor.getDer() == null) { // Es una hoja
 			return 0; // Soy chato, tengo altura 0
 		} else {
 			// Si tengo al menos un hijo
@@ -78,17 +78,17 @@ public class TreeWithNode {
 
 
 	//--------------------------- OBTENER DATOS DE LA RAIZ -----------------------------------------------------------//
-	public int getValorRoot(){
+	public Integer getRoot(){
+		if(this.raiz != null)
+			return this.raiz.getValor();
+		return null;
+	}
+
+	/*public int getValorRoot(){
 		if(this.getRoot() != null)
 			return this.getRoot().getValor();
 		return -9999;
-	}
-
-	public TreeNode getRoot(){
-		if(this.raiz != null)
-			return this.raiz;
-		return null;
-	}
+	}*/
 	//----------------------------------------------------------------------------------------------------------------//
 
 
@@ -111,7 +111,7 @@ public class TreeWithNode {
 		if (raiz == null)
 			return;
 		printInOrder(raiz.getIzq());
-		System.out.print(raiz.getValor() + " ");
+		System.out.print(raiz.getValor() + "  ");
 		printInOrder(raiz.getDer());
 	}
 	//----------------------------------------------------------------------------------------------------------------//
@@ -129,7 +129,7 @@ public class TreeWithNode {
 			return;
 		printPostOrder(raiz.getIzq());
 		printPostOrder(raiz.getDer());
-		System.out.print(raiz.getValor() + " ");
+		System.out.print(raiz.getValor() + "  ");
 	}
 	//----------------------------------------------------------------------------------------------------------------//
 
@@ -144,7 +144,7 @@ public class TreeWithNode {
 	private void printPreOrder(TreeNode raiz) { //falta incorporar los separadores ("-")
 		if (raiz == null)
 			return;
-		System.out.print(raiz.getValor() + " ");
+		System.out.print(raiz.getValor() + "  ");
 		printPreOrder(raiz.getIzq());
 		printPreOrder(raiz.getDer());
 	}
@@ -182,38 +182,25 @@ public class TreeWithNode {
 	}
 	//----------------------------------------------------------------------------------------------------------------//
 
-	/*public ArrayList<TreeNode> getFrontera() {
-		ArrayList<TreeNode> hojas = new ArrayList<TreeNode>();
-		TreeNode cursor = new TreeNode();
-		int valorCursor;
-		if (raiz.getIzq() == null && raiz.getDer() == null) { // Si es una hoja
-			hojas.add(raiz);
-			return hojas; // Soy chato, tengo altura 0
-		} else {
-			// Si tengo al menos un hijo
-			cursor = this.raiz;
-			while (cursor.getIzq() != null){
-				cursor = cursor.getIzq();
-				valorCursor = cursor.getValor();
-			}
-			hojas.add(cursor);
-			while (cursor.getDer() != null){
-				cursor = cursor.getDer();
-			}
-			hojas.add(cursor);
-			return hojas;
-		}
-	}*/
+	//------------------ OBTIENE LISTA CON LAS HOJAS DEL ARBOL -------------------------------------------------------//
+	public ArrayList<Integer> getFrontera() {
+		ArrayList<Integer> hojas = new ArrayList<Integer>();
+		raiz.listarHojas(hojas);
+		return hojas;
+	}
+	//----------------------------------------------------------------------------------------------------------------//
 
-
-
-	/*public ArrayList<TreeNode> getLongestBranch() {
-
+	//------------------ OBTIENE LISTA CON LOS NODOS DE LA RAMA MAS LARGA --------------------------------------------//
+	public ArrayList<Integer> getLongestBranch() {
+		ArrayList<Integer> ramaLarga;
+		ramaLarga = raiz.getLongestBranch();
+		return ramaLarga;
 	}
 
-	public ArrayList<TreeNode> getFrontera(int nivel) {
 
-	}*/
+
+
+
 
 
 
