@@ -5,18 +5,21 @@ import java.util.ArrayList;
 public class TreeNode {
 
 	private int valor;
+	private TreeNode padre;
 	private TreeNode izquierda;
 	private TreeNode derecha;
 
 	//------------------------------ CONSTRUCTORES -------------------------------------------------------------------//
 	public TreeNode(int value) {
 		this.valor = value;
+		this.padre = null;
 		this.izquierda = null;
 		this.derecha = null;
 	}
 
 	public TreeNode() {
 		this.valor = 0;
+		this.padre = null;
 		this.izquierda = null;
 		this.derecha = null;
 	}
@@ -36,12 +39,22 @@ public class TreeNode {
 		return derecha;
 	}
 
-	public void setRight(TreeNode right) {
+	public void setDer(TreeNode right) {
 		this.derecha = right;
 	}
 
 	public int getValor() {
 		return valor;
+	}
+
+	public void setValor(int valor) { this.valor = valor; }
+
+	public TreeNode getPadre() {
+		return padre;
+	}
+
+	public void setPadre(TreeNode padre) {
+		this.padre = padre;
 	}
 	//----------------------------------------------------------------------------------------------------------------//
 
@@ -91,7 +104,7 @@ public class TreeNode {
 	//----------------------------------------------------------------------------------------------------------------//
 
 
-	//------------------------------- AUXILIAR DE getElementAtLevel(int nivel) -------------------------------------------------//
+	//------------------------------- AUXILIAR DE getElementAtLevel(int nivel) ---------------------------------------//
 	public ArrayList<Integer> getElementAtLevelLista(int nivel, int contador){
 		ArrayList<Integer> lista = new ArrayList<Integer>();
 		if(nivel==contador) { // soy una hoja debo retornar mi valor
@@ -107,6 +120,10 @@ public class TreeNode {
 		}
 		return lista;
 	}
+	//----------------------------------------------------------------------------------------------------------------//
+
+
+	//------------------------------- AUXILIAR DE DELETE -------------------------------------------------------------//
 
 
 }

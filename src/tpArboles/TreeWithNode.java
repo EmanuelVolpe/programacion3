@@ -40,7 +40,7 @@ public class TreeWithNode {
 		} else {
 			if (actual.getDer() == null) { 
 				TreeNode temp = new TreeNode(valor);
-				actual.setRight(temp);
+				actual.setDer(temp);
 			} else {
 				add(actual.getDer(),valor);
 			}
@@ -49,7 +49,7 @@ public class TreeWithNode {
 	//----------------------------------------------------------------------------------------------------------------//
 
 
-	//------------ OBTENER ALTURA DEL ARBOL --------------------------------------------------------------------------//
+	//------------ RETORNA ALTURA DEL ARBOL --------------------------------------------------------------------------//
 	// O(n) donde n es la cantidad de nodos del arbol
 	public int getHeight() {
 		if (this.raiz == null)
@@ -77,7 +77,7 @@ public class TreeWithNode {
 	//----------------------------------------------------------------------------------------------------------------//
 
 
-	//--------------------------- OBTENER DATOS DE LA RAIZ -----------------------------------------------------------//
+	//--------------------------- RETORNA LOS DATOS DE LA RAIZ -------------------------------------------------------//
 	public Integer getRoot(){
 		if(this.raiz != null)
 			return this.raiz.getValor();
@@ -151,7 +151,7 @@ public class TreeWithNode {
 	//----------------------------------------------------------------------------------------------------------------//
 
 
-	//------------------------- OBTENER MAXIMO ELEMENTO --------------------------------------------------------------//
+	//------------------------- RETORNA EL MAXIMO ELEMENTO --------------------------------------------------------------//
 	public int getMaxElem(){
 		if (raiz == null)
 			return -9999;
@@ -183,7 +183,7 @@ public class TreeWithNode {
 	//----------------------------------------------------------------------------------------------------------------//
 
 
-	//------------------ OBTIENE LISTA CON LAS HOJAS DEL ARBOL -------------------------------------------------------//
+	//------------------ RETORNA LISTA CON LAS HOJAS DEL ARBOL -------------------------------------------------------//
 	public ArrayList<Integer> getFrontera() {
 		ArrayList<Integer> hojas = new ArrayList<Integer>();
 		raiz.listarHojas(hojas);
@@ -192,7 +192,7 @@ public class TreeWithNode {
 	//----------------------------------------------------------------------------------------------------------------//
 
 
-	//------------------ OBTIENE LISTA CON LOS NODOS DE LA RAMA MAS LARGA --------------------------------------------//
+	//------------------ RETORNA LISTA CON LOS NODOS DE LA RAMA MAS LARGA --------------------------------------------//
 	public ArrayList<Integer> getLongestBranch() {
 		ArrayList<Integer> ramaMasLarga;
 		ramaMasLarga = raiz.getLongestBranch();
@@ -201,17 +201,106 @@ public class TreeWithNode {
 	//----------------------------------------------------------------------------------------------------------------//
 
 
-	//------------------ OBTIENE LISTA CON LOS NODOS UN NIVEL PEDIDO -------------------------------------------------//
+	//------------------ RETORNA LISTA CON LOS NODOS UN NIVEL PEDIDO -------------------------------------------------//
 	public ArrayList<Integer> getElementAtLevel(int nivel){
 		return raiz.getElementAtLevelLista(nivel,0);
 	}
 	//----------------------------------------------------------------------------------------------------------------//
 
 
+	//------------------ RETORNA UN NODO(SI EXISTE) CON EL VALOR PEDIDO ----------------------------------------------//
+	public TreeNode buscarNodo(int num){
+		TreeNode aux = this.raiz;
+		while (aux.getValor() != num){
+			if(num < aux.getValor()){
+				aux = aux.getIzq();
+			}else{
+				aux = aux.getDer();
+			}
+			if (aux == null){
+				return null;
+			}
+		}
+		return aux;
+	}
+	//----------------------------------------------------------------------------------------------------------------//
 
 
+	//---------------------------------------- DELETE ----------------------------------------------------------------//
+	public boolean delete(int valor) {
+		TreeNode aux = raiz;
+		TreeNode padre = raiz;
+		boolean esHijoIzq = true;
 
+		while(aux.getValor() != valor){
+			padre = aux;
+			if(valor < aux.getValor()){
+				esHijoIzq = true;
+				aux = aux.getIzq();
+			}else{
+				esHijoIzq = false;
+				aux = aux.getDer();
+			}
+			if (aux == null) {
+				return false;
+			}
+		} // Fin del Ciclo While
 
+		if(aux.getIzq() == null && aux.getDer() == null){
+			if(aux == raiz){
+				raiz = null;
+			}else if (esHijoIzq){
+				padre.setIzq(null);
+			}else{
+				padre.setDer(null);
+			}
+		}else if(aux.getDer() == null){
+			if(aux == raiz){
+				raiz = aux.getIzq();
+			}else if (esHijoIzq){
+				padre.setIzq(aux.getIzq());
+			}else{
+				padre.setDer(aux.getIzq());
+			}
+		}else if(aux.getIzq() == null){
+			if(aux == raiz){
+				raiz = aux.getDer();
+			}else if (esHijoIzq){
+				padre.setIzq(aux.getDer());
+			}else{
+				padre.setDer(aux.getIzq());
+			}
+		}else{
+			TreeNode nodoReemplazo = getNodoReemplazo(aux);
+			if (aux == raiz){
+				raiz = nodoReemplazo;
+			} else if (esHijoIzq){
+				padre.setIzq(nodoReemplazo);
+			}else{
+				padre.setDer(nodoReemplazo);
+			}
+			nodoReemplazo.setIzq(aux.getIzq());
+		}
+		return true;
+	}
 
+	//---------------------------------------- METODO AUXILIAR DEL DELETE --------------------------------------------//
+	public TreeNode getNodoReemplazo(TreeNode nodoReemp){
+		TreeNode reemplazaPadre = nodoReemp;
+		TreeNode reemplazo = nodoReemp;
+		TreeNode auxiliar = nodoReemp.getDer();
 
+		while (auxiliar != null){
+			reemplazaPadre = reemplazo;
+			reemplazo = auxiliar;
+			auxiliar = auxiliar.getIzq();
+		}
+		if (reemplazo != nodoReemp.getDer()){
+			reemplazaPadre.setIzq(reemplazo.getDer());
+			reemplazo.setDer(nodoReemp.getDer());
+		}
+		System.out.println("El nodo reemplazo es: " + reemplazo.getValor());
+		return reemplazo;
+	}
+	//----------------------------------------------------------------------------------------------------------------//
 }
