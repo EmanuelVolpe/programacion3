@@ -20,15 +20,15 @@ public class TreeWithNode {
 	//----------------------------------------------------------------------------------------------------------------//
 
 
-	//------------ METODO AGREGAR ------------------------------------------------------------------------------------//
+	//----------------------------- METODO AGREGAR -------------------------------------------------------------------//
 	public void add(int value) {
 		if (this.raiz == null)
 			this.raiz = new TreeNode(value);
 		else
-			this.add(this.raiz, value); // estoy llamando al OTRO metodo ADD(con 2 parametros)
+			this.add(this.raiz, value); //Estoy llamando al OTRO metodo ADD(con 2 parametros)
 	}
 	
-	// O(h) donde h es la altura del arbol (la longitud de la rama mas larga)
+	// O(n) donde n es la altura del arbol (la longitud de la rama mas larga)
 	private void add(TreeNode actual, int valor) {
 		if (actual.getValor() > valor) {
 			if (actual.getIzq() == null) { 
@@ -49,8 +49,8 @@ public class TreeWithNode {
 	//----------------------------------------------------------------------------------------------------------------//
 
 
-	//------------ RETORNA ALTURA DEL ARBOL --------------------------------------------------------------------------//
-	// O(n) donde n es la cantidad de nodos del arbol
+	//------------------------------ RETORNA ALTURA DEL ARBOL --------------------------------------------------------//
+	// Complejidad O(n) donde n es la cantidad de nodos del arbol
 	public int getHeight() {
 		if (this.raiz == null)
 			return 0;
@@ -78,6 +78,7 @@ public class TreeWithNode {
 
 
 	//--------------------------- RETORNA LOS DATOS DE LA RAIZ -------------------------------------------------------//
+	// Complejidad O(1). Es constante ya que siempre devuelve un valor
 	public Integer getRoot(){
 		if(this.raiz != null)
 			return this.raiz.getValor();
@@ -93,6 +94,7 @@ public class TreeWithNode {
 
 
 	//----------------------------- VACIO O NO -----------------------------------------------------------------------//
+	// Complejidad O(1). Es constante ya que siempre devuelve un valor
 	public boolean isEmpty(){
 		return this.raiz == null;
 	}
@@ -104,9 +106,10 @@ public class TreeWithNode {
 		if (this.raiz == null)
 			return;
 		else
-			this.printInOrder(this.raiz); // O(n)
+			this.printInOrder(this.raiz);
 	}
 
+	// Complejidad O(n) donde n es la cantidad de nodos del arbol
 	private void printInOrder(TreeNode raiz) {
 		if (raiz == null)
 			return;
@@ -122,8 +125,10 @@ public class TreeWithNode {
 		if (this.raiz == null)
 			return;
 		else
-			this.printPostOrder(this.raiz); // O(n)
+			this.printPostOrder(this.raiz);
 	}
+
+	// Complejidad O(n) donde n es la cantidad de nodos del arbol
 	private void printPostOrder(TreeNode raiz) {
 		if (raiz == null)
 			return;
@@ -139,19 +144,37 @@ public class TreeWithNode {
 		if (this.raiz == null)
 			return;
 		else
-			this.printPreOrder(this.raiz); // O(n)
+			this.printPreOrder(this.raiz);
 	}
-	private void printPreOrder(TreeNode raiz) { //falta incorporar los separadores ("-")
+	/*private void printPreOrder(TreeNode raiz) {
 		if (raiz == null)
 			return;
 		System.out.print(raiz.getValor() + ", ");
 		printPreOrder(raiz.getIzq());
 		printPreOrder(raiz.getDer());
+	}*/
+
+	// Complejidad O(n) donde n es la cantidad de nodos del arbol
+	private void printPreOrder(TreeNode nodo){
+		System.out.print(nodo.getValor() + ",");
+		if(nodo.getIzq()!= null){
+			printPreOrder(nodo.getIzq());
+		} else {
+			System.out.print("-,");
+		}
+		if(nodo.getDer()!=null){
+			printPreOrder(nodo.getDer());
+		} else {
+			System.out.print("-,");
+		}
 	}
 	//----------------------------------------------------------------------------------------------------------------//
 
 
 	//------------------------- RETORNA EL MAXIMO ELEMENTO --------------------------------------------------------------//
+	/* Complejidad O(n) donde n es la cantidad de nodos del arbol. El caso más desfavorable se produce cuando el valor
+	 * buscado se encuentra al final del arbol, ya que tengo que reccorer toda la estructura del mismo.
+	 */
 	public int getMaxElem(){
 		if (raiz == null)
 			return -9999;
@@ -167,6 +190,9 @@ public class TreeWithNode {
 
 
 	//--------------------------------- TIENE O NO UN ELEMENTO -------------------------------------------------------//
+	/* Complejidad O(n) donde n es la cantidad de nodos del arbol. El caso más desfavorable se produce cuando el valor
+	 * buscado se encuentra al final del arbol, ya que tengo que reccorer toda la estructura del mismo.
+	 */
 	public boolean hasElem(int info) {
 		TreeNode nodo = raiz;
 		while (nodo != null) {
@@ -209,6 +235,9 @@ public class TreeWithNode {
 
 
 	//------------------ RETORNA UN NODO(SI EXISTE) CON EL VALOR PEDIDO ----------------------------------------------//
+	/* Complejidad O(n) donde n es la cantidad de nodos del arbol. El caso más desfavorable se produce cuando el valor
+	 * buscado se encuentra al final del arbol, ya que tengo que reccorer toda la estructura del mismo.
+	 */
 	public TreeNode buscarNodo(int num){
 		TreeNode aux = this.raiz;
 		while (aux.getValor() != num){
@@ -227,6 +256,9 @@ public class TreeWithNode {
 
 
 	//---------------------------------------- DELETE ----------------------------------------------------------------//
+	/* Complejidad O(n) donde n es la cantidad de nodos del arbol. El caso más desfavorable se produce cuando el valor
+	 * buscado se encuentra al final del arbol, ya que tengo que reccorer toda la estructura del mismo.
+	 */
 	public boolean delete(int valor) {
 		TreeNode aux = raiz;
 		TreeNode padre = raiz;
@@ -299,7 +331,7 @@ public class TreeWithNode {
 			reemplazaPadre.setIzq(reemplazo.getDer());
 			reemplazo.setDer(nodoReemp.getDer());
 		}
-		System.out.println("El nodo reemplazo es: " + reemplazo.getValor());
+		//System.out.println("El nodo reemplazo es: " + reemplazo.getValor());
 		return reemplazo;
 	}
 	//----------------------------------------------------------------------------------------------------------------//

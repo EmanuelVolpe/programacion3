@@ -5,21 +5,18 @@ import java.util.ArrayList;
 public class TreeNode {
 
 	private int valor;
-	private TreeNode padre;
 	private TreeNode izquierda;
 	private TreeNode derecha;
 
 	//------------------------------ CONSTRUCTORES -------------------------------------------------------------------//
 	public TreeNode(int value) {
 		this.valor = value;
-		this.padre = null;
 		this.izquierda = null;
 		this.derecha = null;
 	}
 
 	public TreeNode() {
 		this.valor = 0;
-		this.padre = null;
 		this.izquierda = null;
 		this.derecha = null;
 	}
@@ -48,14 +45,6 @@ public class TreeNode {
 	}
 
 	public void setValor(int valor) { this.valor = valor; }
-
-	public TreeNode getPadre() {
-		return padre;
-	}
-
-	public void setPadre(TreeNode padre) {
-		this.padre = padre;
-	}
 	//----------------------------------------------------------------------------------------------------------------//
 
 
@@ -121,9 +110,6 @@ public class TreeNode {
 		return lista;
 	}
 	//----------------------------------------------------------------------------------------------------------------//
-
-
-	//------------------------------- AUXILIAR DE DELETE -------------------------------------------------------------//
 
 
 }

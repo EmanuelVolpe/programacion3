@@ -32,7 +32,7 @@
 		System.out.println("El recorrido pedido es: ");
 		tree.printPreOrder();
 		System.out.println(" ");
-		/*System.out.println("-------------------------------------------------------");
+		System.out.println("-------------------------------------------------------");
 		System.out.println("Mayor elemento del Arbol: " + tree.getMaxElem());
 		System.out.println("-------------------------------------------------------");
 		System.out.println("Tiene el elemento pedido: " + tree.hasElem(0));
