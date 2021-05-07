@@ -111,7 +111,7 @@ public class TreeWithNode {
 		if (raiz == null)
 			return;
 		printInOrder(raiz.getIzq());
-		System.out.print(raiz.getValor() + "  ");
+		System.out.print(raiz.getValor() + ", ");
 		printInOrder(raiz.getDer());
 	}
 	//----------------------------------------------------------------------------------------------------------------//
@@ -129,7 +129,7 @@ public class TreeWithNode {
 			return;
 		printPostOrder(raiz.getIzq());
 		printPostOrder(raiz.getDer());
-		System.out.print(raiz.getValor() + "  ");
+		System.out.print(raiz.getValor() + ", ");
 	}
 	//----------------------------------------------------------------------------------------------------------------//
 
@@ -144,7 +144,7 @@ public class TreeWithNode {
 	private void printPreOrder(TreeNode raiz) { //falta incorporar los separadores ("-")
 		if (raiz == null)
 			return;
-		System.out.print(raiz.getValor() + "  ");
+		System.out.print(raiz.getValor() + ", ");
 		printPreOrder(raiz.getIzq());
 		printPreOrder(raiz.getDer());
 	}
@@ -182,6 +182,7 @@ public class TreeWithNode {
 	}
 	//----------------------------------------------------------------------------------------------------------------//
 
+
 	//------------------ OBTIENE LISTA CON LAS HOJAS DEL ARBOL -------------------------------------------------------//
 	public ArrayList<Integer> getFrontera() {
 		ArrayList<Integer> hojas = new ArrayList<Integer>();
@@ -190,12 +191,21 @@ public class TreeWithNode {
 	}
 	//----------------------------------------------------------------------------------------------------------------//
 
+
 	//------------------ OBTIENE LISTA CON LOS NODOS DE LA RAMA MAS LARGA --------------------------------------------//
 	public ArrayList<Integer> getLongestBranch() {
-		ArrayList<Integer> ramaLarga;
-		ramaLarga = raiz.getLongestBranch();
-		return ramaLarga;
+		ArrayList<Integer> ramaMasLarga;
+		ramaMasLarga = raiz.getLongestBranch();
+		return ramaMasLarga;
 	}
+	//----------------------------------------------------------------------------------------------------------------//
+
+
+	//------------------ OBTIENE LISTA CON LOS NODOS UN NIVEL PEDIDO -------------------------------------------------//
+	public ArrayList<Integer> getElementAtLevel(int nivel){
+		return raiz.getElementAtLevelLista(nivel,0);
+	}
+	//----------------------------------------------------------------------------------------------------------------//
 
 
 

@@ -8,6 +8,7 @@ public class TreeNode {
 	private TreeNode izquierda;
 	private TreeNode derecha;
 
+	//------------------------------ CONSTRUCTORES -------------------------------------------------------------------//
 	public TreeNode(int value) {
 		this.valor = value;
 		this.izquierda = null;
@@ -19,7 +20,10 @@ public class TreeNode {
 		this.izquierda = null;
 		this.derecha = null;
 	}
+	//----------------------------------------------------------------------------------------------------------------//
 
+
+	//------------------------- GETTERS Y SETTER IZQUIERDA Y DERECHA -------------------------------------------------//
 	public TreeNode getIzq() {
 		return izquierda;
 	}
@@ -39,7 +43,10 @@ public class TreeNode {
 	public int getValor() {
 		return valor;
 	}
+	//----------------------------------------------------------------------------------------------------------------//
 
+
+	//------------------------------- AUXILIAR DE getFrontera() ------------------------------------------------------//
 	public void listarHojas(ArrayList<Integer> lista) {
 		if (this.getIzq() == null && this.getDer() == null) {
 			lista.add(this.getValor());
@@ -53,7 +60,10 @@ public class TreeNode {
 		else
 			this.getDer().listarHojas(lista);
 	}
+	//----------------------------------------------------------------------------------------------------------------//
 
+
+	//------------------------------- AUXILIAR DE getLongestBranch() -------------------------------------------------//
 	public ArrayList<Integer> getLongestBranch() {
 		ArrayList<Integer> listaIzquierda = new ArrayList<Integer>();
 		ArrayList<Integer> listaDerecha = new ArrayList<Integer>();
@@ -77,6 +87,25 @@ public class TreeNode {
 			listaFinal = listaIzquierda;
 		}
 		return listaFinal;
+	}
+	//----------------------------------------------------------------------------------------------------------------//
+
+
+	//------------------------------- AUXILIAR DE getElementAtLevel(int nivel) -------------------------------------------------//
+	public ArrayList<Integer> getElementAtLevelLista(int nivel, int contador){
+		ArrayList<Integer> lista = new ArrayList<Integer>();
+		if(nivel==contador) { // soy una hoja debo retornar mi valor
+			lista.add(this.getValor());
+		}
+		else {
+			if(this.getIzq() != null) {
+				lista.addAll(this.getIzq().getElementAtLevelLista(nivel,contador+1));
+			}
+			if(this.getDer() != null) {
+				lista.addAll(this.getDer().getElementAtLevelLista(nivel,contador+1));
+			}
+		}
+		return lista;
 	}
 
 
