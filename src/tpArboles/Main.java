@@ -7,10 +7,10 @@ public class Main {
 	public static void main(String[] args) {
 
 		//CREACION DEL ARBOL
-		int[] valoresIniciales = new int[]{15, 4, 1, 25, 50, 6, 7, 20, 5, 30};
 
-		//int[] valoresIniciales = new int[]{2, 6, 9, 10, 12}; //Arreglo de Prueba que dijo Sebas
+		int[] valoresIniciales = new int[]{15, 4, 1, 25, 50, 6, 7, 20, 5, 30}; //Arreglo de Prueba que dijo Sebas
 		TreeWithNode tree = new TreeWithNode(valoresIniciales);
+
 
 		//---------------- PRIMERA ITERACION -------------------------------------------------------------------------//
 		System.out.println("El recorrido pedido es: ");

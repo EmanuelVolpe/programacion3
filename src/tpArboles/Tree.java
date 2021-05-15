@@ -18,11 +18,6 @@ public class Tree {
 		this.derecha = null;
 	}
 
-	/*public Tree(int[] arr) {
-		this.izquierda = null;
-		this.derecha = null;
-	}*/
-
 	public void add(int newValue) {
 		if (newValue < this.valor) {
 			if (this.izquierda == null)

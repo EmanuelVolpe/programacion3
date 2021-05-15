@@ -13,6 +13,7 @@ public class TreeWithNode {
 
 	// Complejidad O(n) donde n es el tamaño del arreglo
 	public TreeWithNode(int[] arr) {
+		this.raiz = null;
 		for (int i = 0; i < arr.length; i++) {
 			TreeNode nodo = new TreeNode(arr[i]);
 			add(nodo.getValor());
@@ -222,7 +223,7 @@ public class TreeWithNode {
 		ArrayList<Integer> lista = new ArrayList<Integer>();
 
 		if (puntero == null) {
-			return null;
+			return lista;
 		}
 		if (puntero.getIzq() == null && puntero.getDer() == null) {
 			lista.add(puntero.getValor());
@@ -285,7 +286,6 @@ public class TreeWithNode {
 		ArrayList<Integer> lista = new ArrayList<Integer>();
 		if (this.raiz != null){
 			lista = getElementAtLevelLista(nivel,this.raiz);
-			return lista;
 		}
 		return lista;
 	}
@@ -293,7 +293,7 @@ public class TreeWithNode {
 	private ArrayList<Integer> getElementAtLevelLista(int nivel, TreeNode puntero){
 		ArrayList<Integer> lista = new ArrayList<Integer>();
 		if(puntero == null){
-			return null;
+			return lista;
 		}
 		if(nivel == 0) { // soy una hoja debo retornar mi valor
 			lista.add(puntero.getValor());
