@@ -23,7 +23,7 @@ public class Main {
 		System.out.println("-------------------------------------------------------");
 		System.out.println("Las hojas del arbol son: " + tree.getFrontera());
 		System.out.println("-------------------------------------------------------");
-		System.out.println("Los elementos en el nivel pedido son: " + tree.getElementAtLevel(2));
+		System.out.println("Los elementos en el nivel pedido son: " + tree.getElementAtLevel(1));
 		System.out.println(" ");
 		System.out.println("/////////////////////////////////////////////////////////////////////////////////////////");
 		System.out.println("/////////////////////////////////////////////////////////////////////////////////////////");
@@ -31,7 +31,7 @@ public class Main {
 		//------------------------------------------------------------------------------------------------------------//
 
 
-		//---------------- SEGUNDA ITERACION -------------------------------------------------------------------------//
+		/*//---------------- SEGUNDA ITERACION -------------------------------------------------------------------------//
 		tree.add(23);
 		tree.add(3);
 		tree.delete(6);
@@ -75,7 +75,7 @@ public class Main {
 		System.out.println("-------------------------------------------------------");
 		System.out.println("Las hojas del arbol son: " + tree.getFrontera());
 		System.out.println("-------------------------------------------------------");
-		System.out.println("Los elementos en el nivel pedido son: " + tree.getElementAtLevel(2));
+		System.out.println("Los elementos en el nivel pedido son: " + tree.getElementAtLevel(2));*/
 
 	}
 }

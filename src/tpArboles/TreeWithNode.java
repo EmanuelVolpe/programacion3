@@ -11,6 +11,7 @@ public class TreeWithNode {
 		this.raiz = null;
 	}
 
+	// Complejidad O(n) donde n es el tamaño del arreglo
 	public TreeWithNode(int[] arr) {
 		for (int i = 0; i < arr.length; i++) {
 			TreeNode nodo = new TreeNode(arr[i]);
@@ -28,7 +29,7 @@ public class TreeWithNode {
 			this.add(this.raiz, value); //Estoy llamando al OTRO metodo ADD(con 2 parametros)
 	}
 	
-	// O(n) donde n es la altura del arbol (la longitud de la rama mas larga)
+	// Complejidad O(n) donde n es la altura del arbol (Corresponde a la longitud de la rama mas larga)
 	private void add(TreeNode actual, int valor) {
 		if (actual.getValor() > valor) {
 			if (actual.getIzq() == null) { 
@@ -172,12 +173,11 @@ public class TreeWithNode {
 
 
 	//------------------------- RETORNA EL MAXIMO ELEMENTO --------------------------------------------------------------//
-	/* Complejidad O(n) donde n es la cantidad de nodos del arbol. El caso más desfavorable se produce cuando el valor
-	 * buscado se encuentra al final del arbol, ya que tengo que reccorer toda la estructura del mismo.
+	/* Complejidad O(h) donde h es la longitud de la rama "más a la derecha".
 	 */
-	public int getMaxElem(){
+	public Integer getMaxElem(){
 		if (raiz == null)
-			return -9999;
+			return null;
 		else {
 			TreeNode nodo = raiz;
 			while(nodo.getDer() != null) {
@@ -210,26 +210,99 @@ public class TreeWithNode {
 
 
 	//------------------ RETORNA LISTA CON LAS HOJAS DEL ARBOL -------------------------------------------------------//
+	/* Complejidad O(n) donde n es la cantidad de nodos del arbol. Debo recorrer todos los nodos del arbol hasta llegar
+	 * a cada una de sus hojas.
+	 */
 	public ArrayList<Integer> getFrontera() {
 		ArrayList<Integer> hojas = new ArrayList<Integer>();
-		raiz.listarHojas(hojas);
+		hojas = listarHojas(raiz);
 		return hojas;
+	}
+	private ArrayList<Integer> listarHojas(TreeNode puntero) {
+		ArrayList<Integer> lista = new ArrayList<Integer>();
+
+		if (puntero == null) {
+			return null;
+		}
+		if (puntero.getIzq() == null && puntero.getDer() == null) {
+			lista.add(puntero.getValor());
+		}
+		if (puntero.getIzq() != null){
+			lista.addAll(listarHojas(puntero.getIzq()));
+		}
+		if (puntero.getDer() != null){
+			lista.addAll(listarHojas(puntero.getDer()));
+		}
+		return lista;
 	}
 	//----------------------------------------------------------------------------------------------------------------//
 
 
 	//------------------ RETORNA LISTA CON LOS NODOS DE LA RAMA MAS LARGA --------------------------------------------//
+	// Complejidad O(n) donde n es la cantidad de nodos del arbol.
 	public ArrayList<Integer> getLongestBranch() {
 		ArrayList<Integer> ramaMasLarga;
-		ramaMasLarga = raiz.getLongestBranch();
+		ramaMasLarga = getLongestBranchAux(this.raiz);
 		return ramaMasLarga;
+	}
+
+	private ArrayList<Integer> getLongestBranchAux(TreeNode puntero) {
+		ArrayList<Integer> listaIzquierda = new ArrayList<Integer>();
+		ArrayList<Integer> listaDerecha = new ArrayList<Integer>();
+		ArrayList<Integer> listaFinal = new ArrayList<Integer>();
+
+		if (puntero == null) {
+			return listaFinal;
+		}
+
+		if (puntero.getIzq() == null && puntero.getDer() == null) {
+			listaFinal.add(puntero.getValor());
+			return listaFinal;
+		}
+		if(puntero.getIzq() != null){
+			listaIzquierda.add(puntero.getValor());
+			listaIzquierda.addAll(getLongestBranchAux(puntero.getIzq()));
+		}
+		if(puntero.getDer() != null){
+			listaDerecha.add(puntero.getValor());
+			listaDerecha.addAll(getLongestBranchAux(puntero.getDer()));
+		}
+		if(listaDerecha.size() >= listaIzquierda.size()){
+			listaFinal = listaDerecha;
+		} else {
+			listaFinal = listaIzquierda;
+		}
+		return listaFinal;
 	}
 	//----------------------------------------------------------------------------------------------------------------//
 
 
 	//------------------ RETORNA LISTA CON LOS NODOS UN NIVEL PEDIDO -------------------------------------------------//
+	/* Complejidad O(n) donde n es el numero de nodos del arbol. El caso mas desfavorable se presenta si se pide obtener
+	 * los elementos del ultimo nivel(Hojas del arbol).
+	 */
 	public ArrayList<Integer> getElementAtLevel(int nivel){
-		return raiz.getElementAtLevelLista(nivel,0);
+		ArrayList<Integer> lista = new ArrayList<Integer>();
+		if (this.raiz != null){
+			lista = getElementAtLevelLista(nivel,this.raiz);
+			return lista;
+		}
+		return lista;
+	}
+
+	private ArrayList<Integer> getElementAtLevelLista(int nivel, TreeNode puntero){
+		ArrayList<Integer> lista = new ArrayList<Integer>();
+		if(puntero == null){
+			return null;
+		}
+		if(nivel == 0) { // soy una hoja debo retornar mi valor
+			lista.add(puntero.getValor());
+		}
+		else {
+			lista.addAll(getElementAtLevelLista(nivel-1, puntero.getIzq()));
+			lista.addAll(getElementAtLevelLista(nivel-1, puntero.getDer()));
+		}
+		return lista;
 	}
 	//----------------------------------------------------------------------------------------------------------------//
 
@@ -238,7 +311,7 @@ public class TreeWithNode {
 	/* Complejidad O(n) donde n es la cantidad de nodos del arbol. El caso más desfavorable se produce cuando el valor
 	 * buscado se encuentra al final del arbol, ya que tengo que reccorer toda la estructura del mismo.
 	 */
-	public TreeNode buscarNodo(int num){
+	private TreeNode buscarNodo(int num){
 		TreeNode aux = this.raiz;
 		while (aux.getValor() != num){
 			if(num < aux.getValor()){
@@ -317,7 +390,7 @@ public class TreeWithNode {
 	}
 
 	//---------------------------------------- METODO AUXILIAR DEL DELETE --------------------------------------------//
-	public TreeNode getNodoReemplazo(TreeNode nodoReemp){
+	private TreeNode getNodoReemplazo(TreeNode nodoReemp){
 		TreeNode reemplazaPadre = nodoReemp;
 		TreeNode reemplazo = nodoReemp;
 		TreeNode auxiliar = nodoReemp.getDer();
