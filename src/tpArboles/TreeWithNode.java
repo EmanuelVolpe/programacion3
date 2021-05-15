@@ -329,9 +329,7 @@ public class TreeWithNode {
 
 
 	//---------------------------------------- DELETE ----------------------------------------------------------------//
-	/* Complejidad O(n) donde n es la cantidad de nodos del arbol. El caso más desfavorable se produce cuando el valor
-	 * buscado se encuentra al final del arbol, ya que tengo que reccorer toda la estructura del mismo.
-	 */
+	// Complejidad O(n) donde n es, en el caso mas desfavorable, la altura del arbol
 	public boolean delete(int valor) {
 		TreeNode aux = raiz;
 		TreeNode padre = raiz;
@@ -373,7 +371,7 @@ public class TreeWithNode {
 			}else if (esHijoIzq){
 				padre.setIzq(aux.getDer());
 			}else{
-				padre.setDer(aux.getIzq());
+				padre.setDer(aux.getDer()); //Habia puesto getIzq() y perdia el 10 !!!!!
 			}
 		}else{
 			TreeNode nodoReemplazo = getNodoReemplazo(aux);
@@ -389,7 +387,6 @@ public class TreeWithNode {
 		return true;
 	}
 
-	//---------------------------------------- METODO AUXILIAR DEL DELETE --------------------------------------------//
 	private TreeNode getNodoReemplazo(TreeNode nodoReemp){
 		TreeNode reemplazaPadre = nodoReemp;
 		TreeNode reemplazo = nodoReemp;
@@ -404,7 +401,7 @@ public class TreeWithNode {
 			reemplazaPadre.setIzq(reemplazo.getDer());
 			reemplazo.setDer(nodoReemp.getDer());
 		}
-		//System.out.println("El nodo reemplazo es: " + reemplazo.getValor());
+		System.out.println("El nodo reemplazo es: " + reemplazo.getValor());
 		return reemplazo;
 	}
 	//----------------------------------------------------------------------------------------------------------------//
