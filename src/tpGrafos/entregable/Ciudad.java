@@ -7,7 +7,7 @@ public class Ciudad {
 	private int estacionesDeServicio;
 	private boolean tieneBalanza;
 	private boolean tieneRadar;
-	private int tallerMecanicos;
+	private int talleresMecanicos;
 
 	public Ciudad(int id, String nombre) {
 		this.nombre = nombre;
@@ -42,12 +42,12 @@ public class Ciudad {
 		this.tieneRadar = tieneRadar;
 	}
 
-	public int getTallerMecanicos() {
-		return tallerMecanicos;
+	public int getTallererMecanicos() {
+		return talleresMecanicos;
 	}
 
-	public void setTallerMecanicos(int tallerMecanicos) {
-		this.tallerMecanicos = tallerMecanicos;
+	public void setTalleresMecanicos(int talleresMecanicos) {
+		this.talleresMecanicos = talleresMecanicos;
 	}
 
 	public int getId() {
