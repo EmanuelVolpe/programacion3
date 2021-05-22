@@ -42,7 +42,7 @@ public class Ciudad {
 		this.tieneRadar = tieneRadar;
 	}
 
-	public int getTallererMecanicos() {
+	public int getTalleresMecanicos() {
 		return talleresMecanicos;
 	}
 

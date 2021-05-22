@@ -68,13 +68,13 @@ public class Main {
 		mapa.addCiudad(tandil);
 
 		// Se agregan las rutas entre ciudades
+		mapa.addRuta(ayacucho, pehuajo, 540);
 		mapa.addRuta(ayacucho, rauch, 50);
 		mapa.addRuta(ayacucho, tandil, 70);
 		mapa.addRuta(bolivar, azul, 100);
+		mapa.addRuta(bolivar, olavarria, 140);
 		mapa.addRuta(bolivar, pehuajo, 70);
-		mapa.addRuta(olavarria, bolivar, 140);
 		mapa.addRuta(olavarria, rauch, 210);
-		mapa.addRuta(pehuajo, ayacucho, 540);
 		mapa.addRuta(tandil, mardelplata, 200);
 		mapa.addRuta(tandil, olavarria, 130);
 		mapa.addRuta(tandil, rauch, 60);
@@ -89,6 +89,8 @@ public class Main {
 		 *  origen: Mar del plata - destino Pehuajó
 		*/
 
+		Solucion solucion = mapa.encontrarCamino(azul,ayacucho); // Busco el mejor camino entre ayacucho y bolivar
+		System.out.print(solucion);
 
 
 

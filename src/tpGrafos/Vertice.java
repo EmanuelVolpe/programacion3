@@ -24,5 +24,12 @@ public class Vertice<T> {
 	public Iterator<Arco<T>> getArcos() {
 		return this.arcos.iterator();
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Vertice{" +
+				"id = " + id +
+				", arcos = " + arcos +
+				'}';
+	}
 }

@@ -46,8 +46,11 @@ public class DFS {
 		Iterator<Integer> it = this.grafo.obtenerAdyacentes(vertice);
 		while(it.hasNext()) {
 			int adyacente = it.next();
-			if (colores.get(adyacente).equals("blanco"))
+			if (colores.get(adyacente).equals("blanco")){
 				dfs_visit(adyacente);
+			} else if (colores.get(adyacente).equals("amarillo")){
+				System.out.println("Hay un ciclo");
+			}
 		}
 		
 		colores.put(vertice, "negro");
@@ -55,6 +58,5 @@ public class DFS {
 		finalizacion.put(vertice, tiempo);
 		
 	}
-	
 
 }
