@@ -6,21 +6,20 @@ import java.util.Iterator;
 
 public class GrafoDirigido<T> implements Grafo<T> {
 
-	// Tercera vuelta
 	private HashMap<Integer,ArrayList<Arco<T>>> mapaDeVertices;
 
 	public GrafoDirigido() {
 		this.mapaDeVertices = new HashMap<Integer,ArrayList<Arco<T>>>();
 	}
 
-	// Complejidad O(V) donde v es la cantidad de vertices del grafo
+	// Complejidad O(1)
 	@Override
 	public void agregarVertice(int verticeId) {
 		if(!mapaDeVertices.containsKey(verticeId))
 			this.mapaDeVertices.put(verticeId, new ArrayList<Arco<T>>());
 	}
 
-	// Complejidad O(V) donde v es la cantidad de vertices del grafo
+	// Complejidad O(A) donde A es la cantidad de arcos del grafo
 	@Override
 	public void borrarVertice(int verticeId) {
 		if(mapaDeVertices.containsKey(verticeId))
@@ -37,7 +36,7 @@ public class GrafoDirigido<T> implements Grafo<T> {
 		}
 	}
 
-	// Complejidad O(a) donde a es la cantidad de arcos salientes
+	// Complejidad O(a) donde a es la cantidad de arcos salientes del vertice de origen
 	@Override
 	public void agregarArco(int verticeId1, int verticeId2, T etiqueta) {
 		if(this.mapaDeVertices.containsKey(verticeId1) && this.mapaDeVertices.containsKey(verticeId2)){
@@ -59,19 +58,19 @@ public class GrafoDirigido<T> implements Grafo<T> {
 		}
 	}
 
-	// Complejidad O(V) donde v es la cantidad de vertices del grafo
+	// Complejidad O(1)
 	@Override
 	public boolean contieneVertice(int verticeId) {
 		return mapaDeVertices.containsKey(verticeId);
 	}
 
-	// Complejidad O(A) donde A es la cantidad de arcos de todo mi grafo
+	// Complejidad O(a) donde a es la cantidad de arcos de salientes del vertice 1
 	@Override
 	public boolean existeArco(int verticeId1, int verticeId2) {
 		return this.obtenerArco(verticeId1, verticeId2) != null;
 	}
 
-	// Complejidad O(A) donde A es la cantidad de arcos de todo mi grafo
+	// Complejidad O(a) donde a es la cantidad de arcos salientes del vertice
 	@Override
 	public Arco<T> obtenerArco(int verticeId1, int verticeId2) {
 		if(this.mapaDeVertices.containsKey(verticeId1)){
@@ -94,13 +93,14 @@ public class GrafoDirigido<T> implements Grafo<T> {
 		return null;
 	}
 
-	// Complejidad O(V) donde V es la cantidad de vertices de todo mi grafo
+	// Complejidad O(1)
 	@Override
 	public int cantidadVertices() {
 		return this.mapaDeVertices.keySet().size();
 	}
 
-	// Complejidad O(A) donde A es la cantidad de arcos de todo mi grafo
+
+	// Complejidad O(1)
 	@Override
 	public int cantidadArcos() {
 		Integer cantidadArcos = 0;
@@ -159,7 +159,7 @@ public class GrafoDirigido<T> implements Grafo<T> {
 		return todosLosArcos.iterator();
 	}
 
-	// Complejidad O(A) donde A es la cantidad de arcos salientes del vertice
+	// Complejidad O(1)
 	@Override
 	public Iterator<Arco<T>> obtenerArcos(int verticeId) {
 		ArrayList<Arco<T>> arcos = this.mapaDeVertices.get(verticeId);

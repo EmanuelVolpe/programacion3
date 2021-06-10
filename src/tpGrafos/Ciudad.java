@@ -1,4 +1,4 @@
-package tpGrafos.entregable;
+package tpGrafos;
 
 public class Ciudad {
 
@@ -18,6 +18,10 @@ public class Ciudad {
 		return nombre;
 	}
 
+	public int getId() {
+		return id;
+	}
+
 	public boolean isTieneBalanza() {
 		return tieneBalanza;
 	}
@@ -25,6 +29,7 @@ public class Ciudad {
 	public void setTieneBalanza(boolean tieneBalanza) {
 		this.tieneBalanza = tieneBalanza;
 	}
+
 
 	public int getEstacionesDeServicio() {
 		return estacionesDeServicio;
@@ -48,10 +53,6 @@ public class Ciudad {
 
 	public void setTalleresMecanicos(int talleresMecanicos) {
 		this.talleresMecanicos = talleresMecanicos;
-	}
-
-	public int getId() {
-		return id;
 	}
 
 }
