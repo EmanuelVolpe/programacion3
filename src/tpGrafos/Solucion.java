@@ -1,4 +1,4 @@
-package tpGrafos.entregable;
+package tpGrafos;
 
 import java.util.ArrayList;
 
@@ -6,7 +6,8 @@ public class Solucion {
     public ArrayList<String> camino;
     public int kilometros;
     public int balanza;
-    public Ciudad ciudadActual, ciudadSiguiente;
+    public Ciudad ciudadActual;
+    public Ciudad ciudadSiguiente;
 
 
     public Solucion(Ciudad ciudadActual, Ciudad ciudadSiguiente, int kilometros, int balanza){
@@ -15,7 +16,6 @@ public class Solucion {
         this.balanza = balanza;
         this.ciudadActual = ciudadActual;
         this.ciudadSiguiente = ciudadSiguiente;
-
     }
 
     public int getKilometros() {
@@ -35,7 +35,7 @@ public class Solucion {
     }
 
     public void agregarLista(ArrayList<String> ciudad) {
-        for(int i=0;i<ciudad.size();i++) {
+        for(int i=0; i<ciudad.size(); i++) {
             this.camino.add(ciudad.get(i));
         }
     }
@@ -46,6 +46,10 @@ public class Solucion {
 
     public void setBalanza(int balanza) {
         this.balanza = balanza;
+    }
+
+    public boolean isEmpty() {
+        return (this.camino.size()==0);
     }
 
     public void addCiudad(String ciudad) {
@@ -62,10 +66,10 @@ public class Solucion {
 
     @Override
     public String toString() {
-        return "Solucion{" +
-                "camino=" + camino +
-                ", kilometros=" + kilometros +
-                ", balanza=" + balanza +
-                '}';
+        return "---------------------------------------------------------------\n" +
+                "Recorrido Solución: \n" +
+                "___________________ \n" +
+                "Camino: " + camino + "\n" + "Kilómetros Recorridos: " + kilometros + "\n" + "Balanza: " + balanza+ "\n" +
+                "---------------------------------------------------------------\n";
     }
 }

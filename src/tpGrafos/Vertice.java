@@ -27,9 +27,10 @@ public class Vertice<T> {
 
 	@Override
 	public String toString() {
-		return "Vertice{" +
-				"id = " + id +
-				", arcos = " + arcos +
-				'}';
+		return "---------------------------------------------------------------\n" +
+				"Vertice: \n" +
+				"___________________ \n" +
+				"ID Vertice: " + id + "\n" + "Arcos: " + arcos + "\n" +
+				"---------------------------------------------------------------\n";
 	}
 }

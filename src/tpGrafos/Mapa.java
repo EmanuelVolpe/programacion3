@@ -1,4 +1,4 @@
-package tpGrafos.entregable;
+package tpGrafos;
 
 import tpGrafos.Arco;
 import tpGrafos.Grafo;
@@ -12,6 +12,7 @@ public class Mapa {
 	private HashMap<Integer,Ciudad> ciudades;
 	HashMap<Integer,String> colores = new HashMap<>();
 	Solucion mejorSolucion;
+	static final int MAX_BALANZA = 1;
 	
 	public Mapa() {
 		this.grafo = new GrafoNoDirigido<Integer>();
@@ -44,16 +45,16 @@ public class Mapa {
 	 private void encontrarCamino(Ciudad origen, Ciudad destino, Solucion s) {
 	 	colores.put(origen.getId(), "amarillo");
 	 	s.addCiudad(origen.getNombre());
-	 	if(origen.isTieneBalanza()) {
-	 		s.setBalanza(s.getBalanza()+1);
-	 	}
 	 	if (destino.getId() == origen.getId()){
 	 		if(this.mejorSolucion == null){
 	 			this.mejorSolucion = new Solucion(origen, destino, s.getKilometros(), s.getBalanza());
 				this.mejorSolucion.agregarLista(s.getCamino());
-			} else if (s.getKilometros() < this.mejorSolucion.getKilometros() && (s.getBalanza()<=this.mejorSolucion.getBalanza())){
-				this.mejorSolucion = new Solucion(origen, destino, s.getKilometros(), s.getBalanza());
-				this.mejorSolucion.agregarLista(s.getCamino());
+			} else if (s.getKilometros() < this.mejorSolucion.getKilometros()){
+				mejorSolucion.setBalanza(s.getBalanza());
+				mejorSolucion.setKilometros(s.getKilometros());
+				mejorSolucion.agregarLista(s.getCamino());
+				//this.mejorSolucion = new Solucion(origen, destino, s.getKilometros(), s.getBalanza());
+				//this.mejorSolucion.agregarLista(s.getCamino());
 			}
 		} else {
 	 		Iterator<Arco<Integer>> iterador = this.grafo.obtenerArcos(origen.getId());
@@ -63,23 +64,33 @@ public class Mapa {
 					s.setKilometros(s.getKilometros() + arco.getEtiqueta());
 					int idDestino = arco.getVerticeDestino();
 					Ciudad ciudadAdyacente = this.ciudades.get(idDestino);
-					encontrarCamino(ciudadAdyacente, destino, s);
+					if(ciudadAdyacente.isTieneBalanza()) {
+						s.setBalanza(s.getBalanza()+1);
+					}
+
+					if(s.getBalanza() <= MAX_BALANZA){
+						encontrarCamino(ciudadAdyacente, destino, s);
+					}
+
+					//encontrarCamino(ciudadAdyacente, destino, s);
 					s.setKilometros(s.getKilometros() - arco.getEtiqueta());
+					if(ciudadAdyacente.isTieneBalanza()) {
+						s.setBalanza(s.getBalanza()-1);
+					}
 				}
 			}
 		}
 	 	colores.put(origen.getId(),"blanco");
-		 s.removeCiudad(origen.getNombre());
-		 if(origen.isTieneBalanza()) {
-			 s.setBalanza(s.getBalanza()-1);
-		 }
+	 	s.removeCiudad(origen.getNombre());
+
 	}
 
 	public Solucion encontrarCamino(Ciudad origen, Ciudad destino) {
+	 	this.mejorSolucion = null;
 	 	for(int idCiudad: this.ciudades.keySet()){
 	 		colores.put(idCiudad, "blanco");
 		}
-		if(ciudades.containsKey(origen.getId())&&ciudades.containsKey(destino.getId())) {
+		if(ciudades.containsKey(origen.getId()) && ciudades.containsKey(destino.getId())) {
 			encontrarCamino(origen,destino, new Solucion(origen,destino,0,0));
 		}
 	 	return this.mejorSolucion;
